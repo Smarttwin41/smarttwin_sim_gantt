@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>SmartTwin Sim — Proje Gantt Şeması</title>
+<style>
+  :root{
+    --ink:#1F2430;
+    --muted:#6B7484;
+    --border:#E3E6EB;
+    --bg-soft:#F6F7F9;
+    --bg-soft2:#EEF0F3;
+    --blue:#2653D6;
+    --blue-bg:#EAF0FE;
+    --green:#188A4E;
+    --green-bg:#E7F6ED;
+    --orange:#D9591E;
+    --orange-bg:#FCEEE4;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:#FFFFFF;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    color:var(--ink);
+  }
+  .page{max-width:1180px;margin:0 auto;padding:44px 32px 64px;}
+
+  /* header */
+  .eyebrow{color:var(--orange);font-weight:700;font-size:13px;letter-spacing:.3px;margin-bottom:8px;}
+  h1{font-size:32px;margin:0 0 6px;font-weight:800;letter-spacing:-.3px;}
+  .subtitle{color:var(--muted);font-size:15px;margin:0 0 28px;max-width:640px;line-height:1.5;}
+
+  /* legend */
+  .legend{display:flex;gap:14px;margin-bottom:34px;flex-wrap:wrap;}
+  .legend-card{
+    flex:1;min-width:230px;display:flex;gap:12px;align-items:flex-start;
+    border:1px solid var(--border);border-radius:10px;padding:14px 16px;
+  }
+  .dot{width:13px;height:13px;border-radius:50%;margin-top:4px;flex:none;}
+  .legend-card b{display:block;font-size:14.5px;margin-bottom:2px;}
+  .legend-card span{font-size:12.5px;color:var(--muted);line-height:1.4;}
+
+  /* gantt */
+  .gantt-title{font-size:13px;font-weight:700;color:var(--muted);margin:0 0 12px;}
+  .gantt{
+    position:relative;border:1px solid var(--border);border-radius:10px;overflow:hidden;
+  }
+  .months{position:relative;height:30px;border-bottom:1px solid var(--border);background:#FCFCFD;}
+  .month{
+    position:absolute;top:0;height:100%;display:flex;align-items:center;justify-content:center;
+    font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.4px;
+    border-right:1px solid var(--border);
+  }
+  .month:last-child{border-right:none;}
+
+  .bands{position:relative;}
+  .band{position:absolute;top:0;bottom:0;border-right:1px solid var(--border);}
+  .band:last-child{border-right:none;}
+  .band .phase-label{
+    position:absolute;top:8px;left:9px;right:7px;font-size:10.5px;font-weight:700;color:var(--ink);line-height:1.3;
+  }
+  .band .phase-date{
+    position:absolute;top:54px;left:9px;right:7px;font-size:10px;color:var(--muted);
+  }
+
+  .lanes{position:relative;padding-top:76px;}
+  .lane{position:relative;height:76px;border-top:1px solid var(--border);}
+  .lane:first-child{border-top:none;}
+  .lane-name{
+    position:absolute;left:10px;top:8px;font-size:11.5px;font-weight:700;color:var(--muted);z-index:2;
+  }
+  .seg{
+    position:absolute;top:26px;height:38px;border-radius:7px;
+    display:flex;align-items:center;padding:0 10px;
+    font-size:11px;font-weight:700;color:#fff;line-height:1.2;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    cursor:default;
+  }
+  .seg.blue{background:var(--blue);}
+  .seg.green{background:var(--green);}
+  .seg.orange{background:var(--orange);}
+
+  /* table */
+  .table-title{font-size:13px;font-weight:700;color:var(--muted);margin:40px 0 12px;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;}
+  th{
+    text-align:left;font-size:10.5px;letter-spacing:.3px;color:var(--muted);
+    border-bottom:1px solid var(--border);padding:8px 10px;font-weight:700;
+  }
+  td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.4;}
+  tr:last-child td{border-bottom:none;}
+  .who{display:flex;align-items:center;gap:7px;white-space:nowrap;font-weight:700;}
+  .who .dot{width:9px;height:9px;margin-top:0;}
+  .phase-cell{font-weight:700;white-space:nowrap;}
+  .phase-cell small{display:block;font-weight:400;color:var(--muted);}
+  .out{color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="eyebrow">SMARTTWIN SIM · PROJE PLANI</div>
+  <h1>Gantt Şeması</h1>
+  <p class="subtitle">1 Eylül – 20 Aralık arası 5 fazlı geliştirme takvimi. Her şerit bir ekip üyesini, her blok o fazdaki görev paketini temsil eder — üzerine gelerek tam görev tanımını görebilirsiniz.</p>
+
+  <div class="legend">
+    <div class="legend-card">
+      <div class="dot" style="background:var(--blue)"></div>
+      <div><b>Mehmet Yunus Sakal — Backend &amp; Yapay Zeka</b><span>.NET 6.0, Python 3.12, SignalR Mimarisi</span></div>
+    </div>
+    <div class="legend-card">
+      <div class="dot" style="background:var(--green)"></div>
+      <div><b>Süleyman Okta — Frontend &amp; 3D</b><span>Vanilla JS, Three.js r185, UI/UX</span></div>
+    </div>
+    <div class="legend-card">
+      <div class="dot" style="background:var(--orange)"></div>
+      <div><b>+1 Anonim Kişi — Destek &amp; Test</b><span>Veri Hazırlığı, QA, API Destek</span></div>
+    </div>
+  </div>
+
+  <p class="gantt-title">TAKVİM · 1 EYLÜL — 20 ARALIK</p>
+  <div class="gantt">
+    <div class="months">
+      <div class="month" style="left:0%;width:27.03%;">EYLÜL</div>
+      <div class="month" style="left:27.03%;width:27.93%;">EKİM</div>
+      <div class="month" style="left:54.95%;width:27.03%;">KASIM</div>
+      <div class="month" style="left:81.98%;width:18.02%;">ARALIK</div>
+    </div>
+
+    <div class="lanes">
+      <!-- phase background bands + labels -->
+      <div class="bands" style="position:absolute;top:0;left:0;right:0;bottom:0;">
+        <div class="band" style="left:0%;width:18.02%;background:#FFFFFF;">
+          <div class="phase-label">Faz 1<br>Altyapı &amp; JS İskeleti</div>
+          <div class="phase-date">1–20 Eyl</div>
+        </div>
+        <div class="band" style="left:18.02%;width:22.52%;background:var(--bg-soft);">
+          <div class="phase-label">Faz 2<br>API, 3D Modeller, Arayüz</div>
+          <div class="phase-date">21 Eyl–15 Eki</div>
+        </div>
+        <div class="band" style="left:40.54%;width:23.42%;background:#FFFFFF;">
+          <div class="phase-label">Faz 3<br>Haberleşme &amp; Dinamik Sahne</div>
+          <div class="phase-date">16 Eki–10 Kas</div>
+        </div>
+        <div class="band" style="left:63.96%;width:18.02%;background:var(--bg-soft);">
+          <div class="phase-label">Faz 4<br>Entegrasyon &amp; Hata Ayıklama</div>
+          <div class="phase-date">11–30 Kas</div>
+        </div>
+        <div class="band" style="left:81.98%;width:18.02%;background:#FFFFFF;">
+          <div class="phase-label">Faz 5<br>Canlıya Alma &amp; Teslimat</div>
+          <div class="phase-date">1–20 Ara</div>
+        </div>
+      </div>
+
+      <!-- lane: Sen (blue) -->
+      <div class="lane">
+        <div class="lane-name">MEHMET YUNUS SAKAL</div>
+        <div class="seg blue" style="left:0.6%;width:16.8%;" title=".NET 6.0 proje kurulumu, Veritabanı (EF Core) ve Swagger ayarları. Python 3.12 sanal ortamının kurulması. Çıktı: API iskeleti ve hazır Python ortamı.">.NET 6.0 / Swagger Kurulumu</div>
+        <div class="seg blue" style="left:18.62%;width:21.3%;" title="Three.js'in ihtiyaç duyacağı temel REST API endpoint'lerinin (C#) yazılması. Python simülasyon algoritmalarının ilk taslağı. Çıktı: Yanıt veren API uçları ve AI taslağı.">REST API + AI Taslağı</div>
+        <div class="seg blue" style="left:40.94%;width:22.2%;" title=".NET tarafında SignalR Hub kurulumu. Python'daki simülasyon çıktılarının C#'a, oradan da anlık olarak soket üzerinden dışarı aktarılması. Çıktı: Uçtan uca real-time veri akışı.">SignalR Hub Kurulumu</div>
+        <div class="seg blue" style="left:64.36%;width:17.2%;" title="Simülasyon hesaplama süresi ile API iletim hızının senkronizasyonu. Python ile .NET arasındaki darboğazların ve gecikmelerin giderilmesi. Çıktı: Stabil çalışan arka uç sistemi.">Senkronizasyon &amp; Latency</div>
+        <div class="seg blue" style="left:82.38%;width:17.2%;" title="Sistemin bir sunucuya (IIS, Docker vb.) deploy edilmesi. API güvenlik (Token/JWT) ve yetkilendirme kontrollerinin son onayı. Çıktı: Yayında ve güvenli bir sunucu sistemi.">Deploy &amp; Güvenlik</div>
+      </div>
+
+      <!-- lane: Süleyman (green) -->
+      <div class="lane">
+        <div class="lane-name">SÜLEYMAN OKTA</div>
+        <div class="seg green" style="left:0.6%;width:16.8%;" title="Vite/Webpack ile frameworksüz Vanilla JS + HTML/CSS proje dizininin açılması. Three.js r185 import edilerek boş sahne, kamera ve ışıkların eklenmesi. Çıktı: Tarayıcıda çalışan ilk boş 3D sahne.">Three.js r185 Boş Sahne</div>
+        <div class="seg green" style="left:18.62%;width:21.3%;" title="Optimize edilmiş modellerin Vanilla JS ile sahneye yüklenmesi. Materyal ve texture ayarları. Saf HTML/CSS/JS ile kontrol paneli ve UI elementlerinin kodlanması. Çıktı: Işıklandırılmış 3D modeller ve arayüz.">3D Modeller + UI Paneli</div>
+        <div class="seg green" style="left:40.94%;width:22.2%;" title="Vanilla JS tarafında SignalR istemcisinin (client) ayağa kaldırılması. Gelen canlı verilerle Three.js'teki modellerin koordinat, dönüş veya renklerinin anlık güncellenmesi. Çıktı: Veriye göre hareket eden 3D simülasyon.">SignalR Client + Canlı Sahne</div>
+        <div class="seg green" style="left:64.36%;width:17.2%;" title="Vanilla JS'te arayüz hatalarının giderilmesi. Three.js bellek sızıntılarının (memory leak) tespiti ve FPS optimizasyonu. Çıktı: Kasmayan (60 FPS) yüksek performanslı tarayıcı deneyimi.">Hata Giderme &amp; FPS Optim.</div>
+        <div class="seg green" style="left:82.38%;width:17.2%;" title="Canlı sunucudaki projenin farklı ekranlarda (Responsive) ve tarayıcılarda (Chrome, Edge) test edilmesi. Son görsel düzeltmeler. Çıktı: Kullanıcıya hazır pürüzsüz arayüz.">Cross-Browser Test</div>
+      </div>
+
+      <!-- lane: Anonim (orange) -->
+      <div class="lane">
+        <div class="lane-name">ANONİM KİŞİ</div>
+        <div class="seg orange" style="left:0.6%;width:16.8%;" title="GLB/GLTF 3D modellerinin toplanıp poligon optimizasyonlarının yapılması. Veritabanı tablo taslaklarının çıkarılması. Çıktı: Web'e uygun hale getirilmiş 3D modeller.">GLB Modelleri + DB Taslağı</div>
+        <div class="seg orange" style="left:18.62%;width:21.3%;" title="Swagger/Postman üzerinden yazılan API'lerin test edilmesi. Python motoruna verilecek test verilerinin (CSV, JSON) temizlenip hazırlanması. Çıktı: Test raporları ve temizlenmiş test verisi.">API Testi + Veri Hazırlığı</div>
+        <div class="seg orange" style="left:40.94%;width:22.2%;" title="Sistemler arası veri aktarım testleri. İhtiyaç halinde basit CRUD API endpoint'lerinin yazılmasına destek. Çıktı: Hızlı çalışan veri köprüsü.">Aktarım Testleri</div>
+        <div class="seg orange" style="left:64.36%;width:17.2%;" title="Sistemi çökertmeye yönelik uçtan uca (End-to-End) stres testleri. Bulunan görsel ve mantıksal hataların (bug) loglanması. Çıktı: Hata raporu ve giderilmiş bug listesi.">Stres Testi &amp; Bug Log</div>
+        <div class="seg orange" style="left:82.38%;width:17.2%;" title="Teknik dokümantasyon, proje sunum materyallerinin hazırlanması ve sistem kullanım kılavuzunun yazılması. Çıktı: Jürilik/teslimat için hazır proje dosyaları.">Dokümantasyon &amp; Teslimat</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="table-title">GÖREV DAĞILIM TABLOSU · TÜM DETAYLAR</p>
+  <table>
+    <thead>
+      <tr><th style="width:14%;">Faz &amp; Tarih</th><th style="width:16%;">Odak Noktası</th><th style="width:12%;">Sorumlu</th><th style="width:34%;">Görev / İş Paketi</th><th style="width:24%;">Beklenen Çıktı</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="phase-cell" rowspan="3">Faz 1<small>1–20 Eyl</small></td>
+        <td rowspan="3">Altyapı ve Vanilla JS İskeleti</td>
+        <td><span class="who"><span class="dot" style="background:var(--blue)"></span>Mehmet Yunus Sakal</span></td>
+        <td>.NET 6.0 proje kurulumu, Veritabanı (EF Core) ve Swagger ayarları. Python 3.12 sanal ortamının kurulması.</td>
+        <td class="out">API iskeleti ve hazır Python ortamı.</td>
+      </tr>
+      <tr>
+        <td><span class="who"><span class="dot" style="background:var(--green)"></span>Süleyman Okta</span></td>
+        <td>Vite/Webpack ile frameworksüz Vanilla JS + HTML/CSS proje dizininin açılması. Three.js r185 import edilerek boş sahne, kamera ve ışıkların eklenmesi.</td>
+        <td class="out">Tarayıcıda çalışan ilk boş 3D sahne.</td>
+      </tr>
+      <tr>
+        <td><span class="who"><span class="dot" style="background:var(--orange)"></span>Anonim Kişi</span></td>
+        <td>GLB/GLTF 3D modellerinin toplanıp poligon optimizasyonlarının yapılması. Veritabanı tablo taslaklarının çıkarılması.</td>
+        <td class="out">Web'e uygun hale getirilmiş 3D modeller.</td>
+      </tr>
+
+      <tr>
+        <td class="phase-cell" rowspan="3">Faz 2<small>21 Eyl–15 Eki</small></td>
+        <td rowspan="3">API, 3D Modeller ve Arayüz</td>
+        <td><span class="who"><span class="dot" style="background:var(--blue)"></span>Mehmet Yunus Sakal</span></td>
+        <td>Three.js'in ihtiyaç duyacağı temel REST API endpoint'lerinin (C#) yazılması. Python simülasyon algoritmalarının ilk taslağı.</td>
+        <td class="out">Yanıt veren API uçları ve AI taslağı.</td>
+      </tr>
+      <tr>
+        <td><span class="who"><span class="dot" style="background:var(--green)"></span>Süleyman Okta</span></td>
+        <td>Optimize edilmiş modellerin Vanilla JS ile sahneye yüklenmesi. Materyal ve texture ayarları. Saf HTML/CSS/JS ile kontrol paneli ve UI elementlerinin kodlanması.</td>
+        <td class="out">Işıklandırılmış 3D modeller ve arayüz.</td>
+      </tr>
+      <tr>
+        <td><span class="who"><span class="dot" style="background:var(--orange)"></span>Anonim Kişi</span></td>
+        <td>Swagger/Postman üzerinden yazılan API'lerin test edilmesi. Python motoruna verilecek test verilerinin (CSV, JSON) temizlenip hazırlanması.</td>
+        <td class="out">Test raporları ve temizlenmiş test verisi.</td>
+      </tr>
+
+      <tr>
+        <td class="phase-cell" rowspan="3">Faz 3<small>16 Eki–10 Kas</small></td>
+        <td rowspan="3">Haberleşme ve Dinamik Sahne</td>
+        <td><span class="who"><span class="dot" style="background:var(--blue)"></span>Mehmet Yunus Sakal</span></td>
+        <td>.NET tarafında SignalR Hub kurulumu. Python'daki simülasyon çıktılarının C#'a, oradan da anlık olarak soket üzerinden dışarı aktarılması.</td>
+        <td class="out">Uçtan uca real-time (anlık) veri akışı.</td>
+      </tr>
+      <tr>
+        <td><span class="who"><span class="dot" style="background:var(--green)"></span>Süleyman Okta</span></td>
+        <td>Vanilla JS tarafında SignalR istemcisinin (client) ayağa kaldırılması. Gelen canlı verilerle Three.js'teki modellerin koordinat, dönüş veya renklerinin anlık güncellenmesi.</td>
+        <td class="out">Veriye göre hareket eden/tepki veren 3D simülasyon.</td>
+      </tr>
+      <tr>
+        <td><span class="who"><span class="dot" style="background:var(--orange)"></span>Anonim Kişi</span></td>
+        <td>Sistemler arası veri aktarım testleri. İhtiyaç halinde basit CRUD API endpoint'lerinin yazılmasına destek.</td>
+        <td class="out">Hızlı çalışan veri köprüsü.</td>
+      </tr>
+
+      <tr>
+        <td class="phase-cell" rowspan="3">Faz 4<small>11–30 Kas</small></td>
+        <td rowspan="3">Entegrasyon ve Hata Ayıklama</td>
+        <td><span class="who"><span class="dot" style="background:var(--blue)"></span>Mehmet Yunus Sakal</span></td>
+        <td>Simülasyon hesaplama süresi ile API iletim hızının senkronizasyonu. Python ile .NET arasındaki darboğazların ve gecikmelerin (latency) giderilmesi.</td>
+        <td class="out">Stabil çalışan arka uç sistemi.</td>
+      </tr>
+      <tr>
+        <td><span class="who"><span class="dot" style="background:var(--green)"></span>Süleyman Okta</span></td>
+        <td>Vanilla JS'te arayüz hatalarının giderilmesi. Three.js bellek sızıntılarının (memory leak) tespiti ve FPS optimizasyonu.</td>
+        <td class="out">Kasmayan (60 FPS) yüksek performanslı tarayıcı deneyimi.</td>
+      </tr>
+      <tr>
+        <td><span class="who"><span class="dot" style="background:var(--orange)"></span>Anonim Kişi</span></td>
+        <td>Sistemi çökertmeye yönelik uçtan uca (End-to-End) stres testleri. Bulunan görsel ve mantıksal hataların (bug) loglanması.</td>
+        <td class="out">Hata raporu ve giderilmiş bug listesi.</td>
+      </tr>
+
+      <tr>
+        <td class="phase-cell" rowspan="3">Faz 5<small>1–20 Ara</small></td>
+        <td rowspan="3">Canlıya Alma ve Teslimat</td>
+        <td><span class="who"><span class="dot" style="background:var(--blue)"></span>Mehmet Yunus Sakal</span></td>
+        <td>Sistemin bir sunucuya (IIS, Docker vb.) deploy edilmesi. API güvenlik (Token/JWT) ve yetkilendirme kontrollerinin son onayı.</td>
+        <td class="out">Yayında ve güvenli bir sunucu sistemi.</td>
+      </tr>
+      <tr>
+        <td><span class="who"><span class="dot" style="background:var(--green)"></span>Süleyman Okta</span></td>
+        <td>Canlı sunucudaki projenin farklı ekranlarda (Responsive) ve tarayıcılarda (Chrome, Edge) test edilmesi. Son görsel düzeltmeler.</td>
+        <td class="out">Kullanıcıya hazır pürüzsüz arayüz.</td>
+      </tr>
+      <tr>
+        <td><span class="who"><span class="dot" style="background:var(--orange)"></span>Anonim Kişi</span></td>
+        <td>Teknik dokümantasyon, proje sunum materyallerinin hazırlanması ve sistem kullanım kılavuzunun yazılması.</td>
+        <td class="out">Jürilik/teslimat için hazır proje dosyaları.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>
