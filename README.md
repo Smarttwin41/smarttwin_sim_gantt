@@ -18,7 +18,7 @@ Bu Gantt şeması, **1 Eylül – 20 Aralık** tarihleri arasındaki 5 fazlı ge
 - 🎨 Ekip üyesine göre renk kodlu şeritler (mavi / yeşil / turuncu)
 - 🖱️ Görev bloklarında hover ile tam açıklama (tooltip)
 - 📋 Altında tüm görevleri, sorumluları ve çıktıları listeleyen detaylı tablo
-- ⚡ Framework yok — tek `index.html` dosyası, kurulum gerektirmez
+- ⚡ Framework yok — tek `index.html` dosyası sayesinde kurulum gerektirmez
 
 ## Ekip
 
@@ -40,4 +40,4 @@ Bu Gantt şeması, **1 Eylül – 20 Aralık** tarihleri arasındaki 5 fazlı ge
 
 ## Lisans
 
-Bu proje OKTA INTRALOGISTICS şirketinin SmartTwin ekibinin iç kullanımı içindir.
+Bu proje OKTA INTRALOGISTICS şirketinin SmartTwin ekibinin iç kullanımı içindir. 
