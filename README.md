@@ -40,4 +40,4 @@ Bu Gantt şeması, **1 Eylül – 20 Aralık** tarihleri arasındaki 5 fazlı ge
 
 ## Lisans
 
-Bu proje SmartTwin Sim ekibinin iç kullanımı içindir.
+Bu proje OKTA INTRALOGISTICS şirketinin SmartTwin ekibinin iç kullanımı içindir.
