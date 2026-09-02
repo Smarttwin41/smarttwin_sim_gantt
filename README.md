@@ -38,19 +38,6 @@ Bu Gantt şeması, **1 Eylül – 20 Aralık** tarihleri arasındaki 5 fazlı ge
 | Faz 4 | 11 – 30 Kasım | Entegrasyon ve Hata Ayıklama |
 | Faz 5 | 1 – 20 Aralık | Canlıya Alma ve Teslimat |
 
-## Kullanılan Teknolojiler
-
-Sadece statik **HTML + CSS** — herhangi bir build adımı veya bağımlılık gerekmez. GitHub Pages üzerinden doğrudan yayınlanabilir.
-
-## Güncelleme
-
-Şemayı güncellemek için:
-
-1. Bu repodaki `index.html` dosyasını açın.
-2. Sağ üstteki kalem (✎ *Edit*) ikonuna tıklayın.
-3. Görev, tarih veya isim değişikliklerini yapın.
-4. **Commit changes** deyin — site 1 dakika içinde otomatik olarak güncellenir.
-
 ## Lisans
 
 Bu proje SmartTwin Sim ekibinin iç kullanımı içindir.
