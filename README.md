@@ -28,6 +28,8 @@ Bu Gantt şeması, **1 Eylül – 20 Aralık** tarihleri arasındaki 5 fazlı ge
 | 🟢 | Süleyman Okta | Frontend & 3D — Vanilla JS, Three.js r185, UI/UX |
 | 🟠 | +1 Anonim Kişi | Destek & Test — Veri Hazırlığı, QA, API Destek |
 
+**Not:** Anonim kişinin görevi bazen Süleyman Okta bazen Mehmet Yunus Sakal bazen de dışarıdan bir yardımcı ile yapılacaktır.
+
 ## Faz Takvimi
 
 | Faz | Tarih | Odak |
